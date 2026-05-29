@@ -10,6 +10,15 @@ body{
     background-color: #0f0f0f;
     color: #e5e5e5;
 }
+button{
+    margin: 1rem;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+body.dark-mode {
+    background-color: #e5e5e5;
+    color: #0f0f0f;
+}
 
 .hero{
     background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
@@ -144,8 +153,7 @@ body{
 }
 .category > h2,
 .category > p,
-.category > .featured,
-.category > .book{
+.category > .featured{
     grid-column: 1 / -1;
 }
 .category > h2{
@@ -157,31 +165,79 @@ body{
     margin: 0 0 6px;
     color: white;
 }
-.featured >h3{
-    font-size: 28px;
-    margin: 0 0 12px;
-    color: greenyellow;
-}
-.books{
+.card,
+.featured{
     background-color: #1a1a1a;
     border: 1px solid #2f2f2f;
     border-radius: 12px;
-    padding: 16px;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
 }
-.books figure{
+.featured{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px;
+}
+.card{
+    padding: 0;
+}
+.card figure{
     margin: 0;
+    padding: 16px;
 }
-.books img,
+.card img,
 .featured img,
-.book img{
+.book img,
+.books img{
     width: 100%;
     max-width: 240px;
     height: auto;
     border-radius: 8px;
     display: block;
 }
-.books figcaption{
+.featured img{
+    max-width: 320px;
+    flex: 0 0 320px;
+    margin: 0;
+    border-radius: 8px;
+}
+.featured .card-body{
+    flex: 1;
+    padding: 16px;
+}
+.card-body > *{
+    margin-top: 0;
+}
+.card-body .badge{
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: #05f315;
+    color: #111;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+.card-body h3,
+.featured .card-body h3,
+.featured > h3{
+    font-size: 28px;
+    margin: 0 0 12px;
+    color: greenyellow;
+}
+.card-body p{
+    margin: 0 0 16px;
+    color: #f4f4f4;
+}
+.books-grid{
+    display: block;
+}
+
+.books figcaption,
+.book figcaption,
+.card figcaption{
     margin-top: 12px;
     font-size: 20px;
     font-weight: 700;
@@ -189,11 +245,19 @@ body{
 
 .books p,
 .books figcaption,
-.books .price{
+.books .price,
+.book p,
+.book figcaption,
+.book .price,
+.card p,
+.card figcaption,
+.card .price{
     color: #f4f4f4;
 }
 
-.books .price{
+.books .price,
+.book .price,
+.card .price{
     display: inline-block;
     margin: 10px 0 14px;
     padding: 6px 12px;
@@ -203,16 +267,24 @@ body{
     font-weight: 700;
     letter-spacing: 0.2px;
 }
-.category .books:nth-of-type(4n+1) figcaption{
+.category .books:nth-of-type(4n+1) figcaption,
+.category .book:nth-of-type(4n+1) figcaption,
+.category .card:nth-of-type(4n+1) figcaption{
     color: #0f766e;
 }
-.category .books:nth-of-type(4n+2) figcaption{
+.category .books:nth-of-type(4n+2) figcaption,
+.category .book:nth-of-type(4n+2) figcaption,
+.category .card:nth-of-type(4n+2) figcaption{
     color: #7c3aed;
 }
-.category .books:nth-of-type(4n+3) figcaption{
+.category .books:nth-of-type(4n+3) figcaption,
+.category .book:nth-of-type(4n+3) figcaption,
+.category .card:nth-of-type(4n+3) figcaption{
     color: #b45309;
 }
-.category .books:nth-of-type(4n+4) figcaption{
+.category .books:nth-of-type(4n+4) figcaption,
+.category .book:nth-of-type(4n+4) figcaption,
+.category .card:nth-of-type(4n+4) figcaption{
     color: #be123c;
 }
 li:nth-child(1){
@@ -315,6 +387,17 @@ li:nth-child(4){
     .category{
         grid-template-columns: 1fr;
         padding: 36px 24px;
+    }
+    .featured{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .featured img{
+        max-width: 100%;
+        flex: none;
+    }
+    .featured .card-body{
+        padding: 0;
     }
 }
 
