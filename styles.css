@@ -373,6 +373,9 @@ li:nth-child(4){
 }
 
 @media (max-width: 768px){
+    button{
+        margin: 0.4rem;
+    }
     .hero{
         padding: 120px 24px 90px;
         min-height: 50vh;
@@ -393,11 +396,16 @@ li:nth-child(4){
         align-items: flex-start;
     }
     .featured img{
-        max-width: 100%;
+        max-width: 260px;
         flex: none;
+        align-self: center;
     }
     .featured .card-body{
         padding: 0;
+    }
+    .contact-form input,
+    .contact-form textarea{
+        width: 100%;
     }
 }
 
