@@ -37,11 +37,6 @@
 
     </section>
 
-    <section class="search-bar">
-        <input type="text" id="search-input" placeholder="Search for books...">
-        <button id="search-button">Search</button>
-    </section>
-
     <section class="main" id="about">
         <div class="image">
           <img src="Images/books.jpg" alt ="Books" class="main-image">  
@@ -56,9 +51,41 @@
            Visit us today and embark on a literary adventure!
         </p>
     </div>
-        
     </section>
 
+    <section class="bookstore-tour" id="bookstore-tour">
+     <h2>Bookstore Tour</h2>
+        <div class="video-container">
+            <video id="bookstore-video" width="100%" controls muted playsinline preload="metadata" poster="Images/bookstore.jpg">
+                <source src="Videos/bookstore.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section class="search-bar">
+        <input type="text" id="search-input" placeholder="Search for books...">
+        <button id="search-button">Search</button>
+        <p id="search-feedback" class="search-feedback" aria-live="polite"></p>
+    </section>
+
+    <section class="checkout-toolbar" id="checkout-toolbar" aria-live="polite">
+        <p id="cart-status">Cart: 0 items | Total: $0.00</p>
+        <button id="open-checkout" class="btn">Checkout</button>
+    </section>
+
+    <section class="checkout-panel" id="checkout-panel" hidden>
+        <div class="checkout-panel-header">
+            <h2>Checkout</h2>
+            <button id="close-checkout" class="btn" type="button">Close</button>
+        </div>
+        <p id="checkout-empty">Your cart is currently empty.</p>
+        <ul id="checkout-items" class="checkout-items"></ul>
+        <div class="checkout-summary">
+            <p>Total: <strong id="checkout-total">$0.00</strong></p>
+            <button id="place-order" class="submit-btn" type="button">Place Order</button>
+        </div>
+    </section>
 
     <section class="category" id="books">
         <h2>Financial-Books</h2>
@@ -70,7 +97,7 @@
             <span class="badge">Best Seller</span>
             <h3>Think and Grow Smart</h3>
             <p>Learn the principles of wealth creation and personal development.</p>
-            <a href="#" class="btn">view more</a>
+            <a href="#" class="btn btn-primary">view more</a>
         </div>
         </div>
 
@@ -155,7 +182,7 @@
                 <span class="badge">Best Seller</span>
                 <h3>The Power of Now</h3>
                 <p>Discover the transformative power of living in the present moment.</p>
-                <a href="#" class="btn">view more</a>
+                <a href="#" class="btn btn-primary">view more</a>
             </div>
         </div>
 
@@ -201,25 +228,13 @@
         </div>
         </div>
 
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/How to Win Friends and Influence People.jpg" alt="Self-Help Book">
-                <figcaption>How to Win Friends and Influence People</figcaption>
-                <p class="price">Price: $349</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
+        
 
         <div class="books-grid">
             <div class="card">
                 <a href="#">
             <figure class="books">
-                <img src="Images/The 7 Habits Of Highly Effective People _ Powerful Lessons In Personal Change By.jpg" alt="Self-Help Book">
+                <img src="Images/" alt="Self-Help Book">
                 <figcaption>The 7 Habits Of Highly Effective People</figcaption>
                 <p class="price">Price: $459</p>
                 <button class="btn">Buy Now</button>
@@ -240,7 +255,7 @@
                 <span class="badge">Best Seller</span>
                 <h3>To Kill a Mockingbird</h3>
                 <p>A classic novel that explores themes of racial injustice and moral growth.</p>
-                <a href="#" class="btn">view more</a>
+                <a href="#" class="btn btn-primary">view more</a>
             </div>
         </div>
 
@@ -323,7 +338,7 @@
             <span class="badge">Best Seller</span>
             <h3>The Power of Mathematics</h3>
             <p>Discover the transformative power of living in the present moment.</p>
-            <a href="#" class="btn">view more</a>
+            <a href="#" class="btn btn-primary">view more</a>
         </div>
     </div>
 
@@ -355,7 +370,6 @@
     </div>
     </div>
 </section>   
-
 
 
 <footer class="contact" id="contact">
