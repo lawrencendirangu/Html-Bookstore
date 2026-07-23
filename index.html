@@ -1,472 +1,289 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover a world of knowledge and imagination at our bookstore.">
+    <meta name="description" content="Readify bookstore demo with search suggestions, wishlist, tour video and contact form.">
     <meta property="og:title" content="Readify Bookstore">
-    <meta property="og:description" content="Discover a world of knowledge and imagination at our bookstore.">
+    <meta property="og:description" content="A demo bookstore with wishlist and interactive browsing.">
     <meta property="og:image" content="Images/books.jpg">
-    <meta property="og:url" content="https://www.readifybookstore.com">
-    <title>BOOKSTORE</title>
+    <title>Readify Bookstore</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/jpg" href="Images/books.jpg">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <section class="hero" id="home">
-        <div class="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#books">Books</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#about">About Us</a></li>
-            </ul>
-            <button id="theme-toggle">💡</button>
+    <header class="site-header" id="home">
+        <div class="site-header-inner">
+            <div class="brand-block">
+                <a class="brand" href="#home">Readify</a>
+                <span class="brand-tag">Bookstore Demo</span>
+            </div>
+
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="#home">Home</a>
+                <a href="#featured">Featured</a>
+                <a href="#categories">Categories</a>
+                <a href="#bookstore-tour">Tour</a>
+                <a href="#checkout">Checkout</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="ghost-button" id="open-checkout" type="button">Checkout</button>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">Light</button>
+                <button class="ghost-button" id="open-modal" type="button">Open Modal</button>
+            </div>
         </div>
+    </header>
 
-        <h1><en>Welcome to<br><span> Readify</span><br> Bookstore</h1></en>
+    <main>
+        <section class="hero section-panel">
+            <div class="hero-copy">
+                <p class="eyebrow">Welcome sector</p>
+                <h1>Welcome to <span>Readify</span> Bookstore</h1>
+                <p class="hero-text">Discover books across finance, self-help, fiction and more. Browse, save to your wishlist, and search by the first letter of a title with instant suggestions.</p>
+                <div class="hero-actions">
+                    <a class="primary-button" href="#featured">Browse books</a>
+                    <a class="secondary-button" href="#bookstore-tour">Watch tour</a>
+                </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <img src="Images/books.jpg" alt="" class="hero-image">
+            </div>
+        </section>
 
-        <button id="open-modal" class="open-modal-btn hero-cta-btn">Open Modal </button>
-        <dialog class="dialog">
-            <h2>Subscribe to Our Bookstore</h2>
-            <p>Stay updated with our latest book releases and special offers!</p>
-            <button id="subscribe" class="dialog-btn">Subscribe</button>
-            <button id="close-modal" class="dialog-btn">Close</button>
-        </dialog>
+        <section class="section-panel search-panel" aria-label="Search books">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Search engine</p>
+                    <h2>Search by first letter</h2>
+                </div>
+            </div>
+            <div class="search-box">
+                <input id="search-input" type="search" placeholder="Type a book title or first letter..." autocomplete="off" aria-describedby="search-feedback">
+                <button id="search-button" type="button">Search</button>
+            </div>
+            <div class="search-suggestions" id="search-suggestions" aria-live="polite"></div>
+            <p class="search-feedback" id="search-feedback" aria-live="polite"></p>
+        </section>
 
-    </section>
+        <section class="section-panel promo-strip" aria-label="Highlights">
+            <article class="promo-action" data-promo-filter="all" tabindex="0">
+                <strong>New Release</strong>
+                <span>Fresh books added often</span>
+            </article>
+            <article class="promo-action" data-promo-filter="classics" tabindex="0">
+                <strong>Pre Order</strong>
+                <span>Reserve before restock</span>
+            </article>
+            <article class="promo-action" data-promo-filter="self-help" tabindex="0">
+                <strong>Top Rated</strong>
+                <span>Reader favourites</span>
+            </article>
+        </section>
 
-    <section class="main" id="about">
-        <div class="image">
-          <img src="Images/books.jpg" alt ="Books" class="main-image">  
-        </div>
-        <div class="text">
-        <h1>Welcome to our Bookstore!</h1>
-        <p>Discover a world of knowledge and imagination at our bookstore.
-           we offer a wide selection  of books across various genres, 
-           including fiction, non-fiction, mystery, romance, science fiction, and more. 
-           Whether you're a passionate reader or just looking for your next great read, 
-           we have something for everyone. Our friendly staff is always ready to assist you in finding the perfect book that suits your interests and preferences. 
-           Visit us today and embark on a literary adventure!
-        </p>
-    </div>
-    </section>
+        <section class="section-panel" id="featured">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Featured</p>
+                    <h2>Trending books</h2>
+                </div>
+                <div class="filter-row" role="tablist" aria-label="Book categories">
+                    <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+                    <button class="filter-chip" type="button" data-filter="finance">Finance</button>
+                    <button class="filter-chip" type="button" data-filter="self-help">Self-help</button>
+                    <button class="filter-chip" type="button" data-filter="fiction">Fiction</button>
+                    <button class="filter-chip" type="button" data-filter="classics">Classics</button>
+                    <button class="filter-chip" type="button" data-filter="wishlist">Wishlist</button>
+                </div>
+            </div>
+            <div class="book-grid" id="book-grid"></div>
+        </section>
 
-    <section class="bookstore-tour" id="bookstore-tour">
-     <h2>Bookstore Tour</h2>
-        <div class="video-container">
-            <video id="bookstore-video" width="100%" controls muted playsinline preload="metadata" poster="Images/bookstore.jpg">
+        <section class="section-panel" id="categories">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Categories</p>
+                    <h2>Better classification</h2>
+                </div>
+            </div>
+            <div class="category-grid">
+                <a class="category-card" href="#featured" data-jump-filter="finance">
+                    <h3>Finance</h3>
+                    <p>Books on money, investing and smart decisions.</p>
+                </a>
+                <a class="category-card" href="#featured" data-jump-filter="self-help">
+                    <h3>Self-help</h3>
+                    <p>Growth, habits, discipline and motivation.</p>
+                </a>
+                <a class="category-card" href="#featured" data-jump-filter="fiction">
+                    <h3>Fiction</h3>
+                    <p>Stories and classics for relaxed reading.</p>
+                </a>
+                <a class="category-card" href="#featured" data-jump-filter="classics">
+                    <h3>Classics</h3>
+                    <p>Timeless titles every bookshelf should keep.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="section-panel tour-panel" id="bookstore-tour">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Bookstore tour</p>
+                    <h2>Autoplays when you reach it</h2>
+                </div>
+            </div>
+            <video id="bookstore-video" controls muted playsinline preload="metadata" poster="Images/bookstore.jpg">
                 <source src="videos/bookstore.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </div>
-    </section>
+            <p class="section-note">The video will start playing automatically when it becomes visible on desktop or mobile.</p>
+        </section>
 
-    <section class="search-bar">
-        <input type="text" id="search-input" placeholder="Search for books...">
-        <button id="search-button">Search</button>
-        <p id="search-feedback" class="search-feedback" aria-live="polite"></p>
-    </section>
-
-    <section class="checkout-toolbar" id="checkout-toolbar" aria-live="polite">
-        <p id="cart-status">Cart: 0 items | Total: $0.00</p>
-        <button id="open-checkout" class="btn">Checkout</button>
-    </section>
-
-    <section class="checkout-panel" id="checkout-panel" hidden>
-        <div class="checkout-panel-header">
-            <h2>Checkout</h2>
-            <button id="close-checkout" class="btn" type="button">Close</button>
-        </div>
-        <p id="checkout-empty">Your cart is currently empty.</p>
-        <ul id="checkout-items" class="checkout-items"></ul>
-        <div class="checkout-summary">
-            <p>Total: <strong id="checkout-total">$0.00</strong></p>
-            <button id="place-order" class="submit-btn" type="button">Place Order</button>
-        </div>
-    </section>
-
-    <section class="category" id="books">
-        <h2>Financial-Books</h2>
-        <p>Helps on managing personal finances, investing, and understanding economic principles.</p>
-
-        <div class="card featured ">
-            <img src="Images/Think and Grow Smart.jpg" alt="best seller">
-            <div class="card-body">
-            <span class="badge">Best Seller</span>
-            <h3>Think and Grow Smart</h3>
-            <p>Learn the principles of wealth creation and personal development.</p>
-            <a href="#" class="btn btn-primary">view more</a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="book">
-                <img src="Images/Rich Dad Poor Dad.jpg" alt="Financial Book">
-                <figcaption>Rich Dad Poor Dad</figcaption>
-                <p class="price">Price: $399</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-            </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/The Psychology of Money by Morgan Housel.jpg" alt="Financial Book">
-                <figcaption>The Psychology of Money by Morgan Housel</figcaption>
-                <p class="price">Price: $499</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-        </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/Finance Book_ Seven Myths About Money_.jpg" alt="Financial Book">
-                <figcaption>Seven Myths About Money Book</figcaption>
-                <p class="price">Price: $349</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-            </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/Money Works_.jpg" alt="Financial Book">
-                <figcaption>Money Works Book</figcaption>
-                <p class="price">Price: $299</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-            </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/The Art of Spending Money _ Morgan Housel Book.jpg" alt="Financial Book">
-                <figcaption>The Art of Spending Money by Morgan Housel</figcaption>
-                <p class="price">Price: $449</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-            </a>
-        </div>
-        </div>
-    </section>
-
-    <section class="category">
-        <h2>Self-Help Books</h2>
-        <p>Provides guidance and strategies for personal growth, motivation, and improving various aspects of life.</p>
-
-        <div class="card featured">
-            <img src="Images/Power by Robert Greene.jpg" alt="best seller">
-            <div class="card-body">
-                <span class="badge">Best Seller</span>
-                <h3>The Power of Now</h3>
-                <p>Discover the transformative power of living in the present moment.</p>
-                <a href="#" class="btn btn-primary">view more</a>
+        <section class="section-panel checkout-panel" id="checkout">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Checkout</p>
+                    <h2>Demo checkout</h2>
+                </div>
             </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="book">
-                <img src="Images/Don't believe everything you think eBook is available in the store.jpg" alt="Self-Help Book">
-                <figcaption>Don't Believe Everything You Think</figcaption>
-                <p class="price">Price: $379</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/Self Help_ This Is Your Chance To Change Your Life By Bernstein, Gabrielle.jpg" alt="Self-Help Book">
-                <figcaption>This Is Your Chance To Change Your Life By Bernstein, Gabrielle</figcaption>
-                <p class="price">Price: $429</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/You are a Badass - Jen Sincero.jpg" alt="Self-Help Book">
-                <figcaption>You are a Badass - Jen Sincero</figcaption>
-                <p class="price">Price: $399</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/" alt="Self-Help Book">
-                <figcaption>The 7 Habits Of Highly Effective People</figcaption>
-                <p class="price">Price: $459</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-    </section>
-
-    <section class="category">
-        <h2>Fiction Books</h2>
-        <p>Offers a wide range of imaginative and narrative-driven stories that entertain, inspire, and provoke thought.</p>
-
-        <div class="card featured">
-            <img src="Images/To Kill A Mockingbird by Harper Lee.jpg" alt="best seller">
-            <div class="card-body">
-                <span class="badge">Best Seller</span>
-                <h3>To Kill a Mockingbird</h3>
-                <p>A classic novel that explores themes of racial injustice and moral growth.</p>
-                <a href="#" class="btn btn-primary">view more</a>
+            <div class="checkout-toolbar">
+                <p id="cart-status">Cart: 0 items | Total: $0.00</p>
+                <p class="checkout-note">Demo only. No card is charged and no payment gateway is connected.</p>
             </div>
-        </div>
+            <div class="checkout-demo-layout" id="checkout-panel">
+                <div class="checkout-main-card">
+                    <section class="checkout-block">
+                        <h3>Shipping Address</h3>
+                        <div class="checkout-form-grid">
+                            <label>
+                                <span>Name</span>
+                                <input id="checkout-name" type="text" placeholder="First & Last Name">
+                            </label>
+                            <label class="span-full">
+                                <span>Address 1</span>
+                                <input id="checkout-address-1" type="text" placeholder="421, Dubai Main St">
+                            </label>
+                            <label class="span-full">
+                                <span>Address 2</span>
+                                <input id="checkout-address-2" type="text" placeholder="Apartment, suite, etc.">
+                            </label>
+                            <label>
+                                <span>City</span>
+                                <input id="checkout-city" type="text" placeholder="City">
+                            </label>
+                            <label>
+                                <span>State</span>
+                                <input id="checkout-state" type="text" placeholder="State">
+                            </label>
+                            <label>
+                                <span>Zip</span>
+                                <input id="checkout-zip" type="text" placeholder="Zip code">
+                            </label>
+                        </div>
+                    </section>
 
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="book">
-                <img src="Images/The Great Gatsby.jpg" alt="Fiction Book">
-                <figcaption>The Great Gatsby</figcaption>
-                <p class="price">Price: $299</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/George Orwell's Nineteen Eighty-Four (1984).jpg" alt="Fiction Book">
-                <figcaption>Nineteen Eighty-Four</figcaption>
-                <p class="price">Price: $329</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/Harry Potter And The Sorcerers Stone Jk Rowling Paperback 1st Scholastic Edition.jpg" alt="Fiction Book">
-                <figcaption>Harry Potter And The Sorcerer's Stone</figcaption>
-                <p class="price">Price: $499</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/The Fellowship Of The Ring [the Lord Of The Rings, Part 1].jpg" alt="Fiction Book">
-                <figcaption>The Fellowship Of The Ring</figcaption>
-                <p class="price">Price: $549</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-
-        <div class="books-grid">
-            <div class="card">
-                <a href="#">
-            <figure class="books">
-                <img src="Images/The Catcher In The Rye ~ JD Salinger ~ 1951 ~ 1st Edition ~ Little Brown And Company_.jpg" alt="Fiction Book">
-                <figcaption>The Catcher In The Rye</figcaption>
-                <p class="price">Price: $319</p>
-                <button class="btn">Buy Now</button>
-                <button class="btn">Add to Cart</button>
-            </figure>
-                </a>
-        </div>
-        </div>
-    </section>
-
-<section class="category">
-    <h2>Educational  Book</h2>
-    <div class="card featured">
-        <img src="Images/Mastering Mathematics.jpg" alt="best seller">
-        <div class="card-body">
-            <span class="badge">Best Seller</span>
-            <h3>The Power of Mathematics</h3>
-            <p>Discover the transformative power of living in the present moment.</p>
-            <a href="#" class="btn btn-primary">view more</a>
-        </div>
-    </div>
-
-    <div class="books-grid">
-        <div class="card">
-            <a href="#">
-        <figure class="book">
-            <img src="Images/Fun with Numbers.jpg" alt="Educational Book">
-            <figcaption>Fun with Numbers</figcaption>
-            <p class="price">Price: $279</p>
-            <button class="btn">Buy Now</button>
-            <button class="btn">Add to Cart</button>
-        </figure>
-            </a>
-    </div>
-    </div>
-
-    <div class="books-grid">
-        <div class="card">
-            <a href="#">
-        <figure class="books">
-            <img src="Images/John Maxwell - Développer les leaders qui sommeillent en vous - Livre numérique.jpg" alt="Educational Book">
-            <figcaption>Développer les leaders qui sommeillent en vous</figcaption>
-            <p class="price">Price: $389</p>
-            <button class="btn">Buy Now</button>
-            <button class="btn">Add to Cart</button>
-        </figure>
-            </a>
-    </div>
-    </div>
-</section>   
-
-
-<footer class="contact" id="contact">
-    <section class="contact-details">
-        <h2>Contact Us</h2>
-        <p>Have questions or need assistance? Reach out to us!</p>
-        <ul>
-            <li>Email: <a href="mailto:info@bookstore.com">info@bookstore.com</a></li>
-            <li>Phone: <a href="tel:+1234567890">+1 234 567 890</a></li>
-            <li>Address: 123 Bookstore St, Kansas City, United States of America</li>
-        </ul>
-        <p>&copy; 2026 Bookstore. All rights reserved.</p>
-    </section>
-
-    <section class="contact-form">
-    <div class="container">
-        <h2>Contact Us</h2>
-        <p>Have questions or need assistance? Reach out to us!</p>
-
-        <div class="form-progress">
-            <div class="step active">
-                <span class="step-number">1</span>
-                <span>Address</span>
-            </div>
-            <div class="step">
-                <span class="step-number">2</span>
-                <span>Email</span>
-            </div>
-            <div class="step">
-                <span class="step-number">3</span>
-                <span>Review</span>
-            </div>
-        </div>
-
-        <form id="multi-step-form" novalidate>
-            <div class="form-step active">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Enter your name" required>
-
-                <label for="address">Address</label>
-                <input id="address" name="address" type="text" placeholder="Enter your address" required>
-            </div>
-
-            <div class="form-step">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="Enter your email" required>
-
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="Enter your phone number">
-            </div>
-
-            <div class="form-step">
-                <div class="review-summary">
-                    <h3>Review Your Details</h3>
-                    <p><strong>Name:</strong> <span id="review-name">-</span></p>
-                    <p><strong>Address:</strong> <span id="review-address">-</span></p>
-                    <p><strong>Email:</strong> <span id="review-email">-</span></p>
-                    <p><strong>Phone:</strong> <span id="review-phone">-</span></p>
+                    <section class="checkout-block">
+                        <h3>Payment Method</h3>
+                        <div class="payment-options" id="payment-options">
+                            <button class="payment-option is-active" type="button" data-payment-method="card">Card</button>
+                            <button class="payment-option" type="button" data-payment-method="wallet">Wallet</button>
+                            <button class="payment-option" type="button" data-payment-method="cod">COD</button>
+                        </div>
+                        <p class="checkout-note">Demo format only. These controls are visual and no payment details are processed.</p>
+                    </section>
                 </div>
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Enter your message" required></textarea>
+                <aside class="checkout-summary-card">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items" class="checkout-items"></div>
+                    <div class="summary-line"><span>Subtotal</span><strong id="checkout-subtotal">$0.00</strong></div>
+                    <div class="summary-line"><span>Shipping</span><strong id="checkout-shipping">$0.00</strong></div>
+                    <div class="summary-line"><span>Tax</span><strong id="checkout-tax">$0.00</strong></div>
+                    <div class="summary-line total"><span>Total</span><strong id="checkout-total">$0.00</strong></div>
+                    <p class="empty-state" id="checkout-empty">Your cart is empty.</p>
+                    <button class="primary-button full-width-button" id="place-order" type="button">Place Order</button>
+                </aside>
             </div>
+        </section>
 
-            <div class="form-buttons">
-                <button type="button" class="btn prev-btn" disabled>Back</button>
-                <button type="button" class="btn next-btn">Next</button>
-                <button type="submit" class="submit-btn">Submit</button>
+        <section class="section-panel contact-panel" id="contact">
+            <div class="section-heading compact">
+                <div>
+                    <p class="eyebrow">Contact</p>
+                    <h2>Get in touch</h2>
+                </div>
             </div>
-        </form>
-    </div>
-    </section>
-   <section class="recomendation">
-    <p>Would you like to receive personalized book recommendations?</p>
-    <label>
-        <input type="radio"name="recommendation" value="yes">Yes
-        <input type="radio"name="recommendation" value="no">No
-    </label>
-   </section>
+            <div class="contact-layout">
+                <div class="contact-details">
+                    <p><strong>Email:</strong> contact@getalmasar.com</p>
+                    <p><strong>Phone:</strong> +971527717243</p>
+                    <p><strong>Address:</strong> UAE, Dubai</p>
+                    <p>2026 bookstore. All rights reserved.</p>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <label>
+                        <span>Your name</span>
+                        <input type="text" id="contact-name" placeholder="Your name" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" id="contact-email" placeholder="you@example.com" required>
+                    </label>
+                    <label>
+                        <span>Message</span>
+                        <textarea id="contact-message" rows="5" placeholder="Write your message" required></textarea>
+                    </label>
+                    <button class="primary-button" type="submit">Send message</button>
+                </form>
+            </div>
+        </section>
 
+        <footer class="site-footer">
+            <p>2026 bookstore. All rights reserved.</p>
+        </footer>
+    </main>
 
+    <div class="modal-overlay" id="modal-overlay" hidden></div>
+    <dialog class="modal-dialog" id="subscribe-modal">
+        <h2>Subscribe to Readify</h2>
+        <p>Stay updated with new books, deals and featured picks. This is a demo popup only.</p>
+        <div class="modal-actions">
+            <button class="primary-button" id="subscribe" type="button">Subscribe</button>
+            <button class="secondary-button" id="close-modal" type="button">Close</button>
+        </div>
+    </dialog>
 
-    <section class="social-media">
-        <h2>Follow Us</h2>
-        <p>Stay connected with us on social media for updates, promotions, and more!</p>
-        <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">LinkedIn</a></li>
-        </ul>
-    </section>
-    <p>&copy; 2026 Bookstore. All rights reserved.</p>
+    <aside class="wishlist-panel" id="wishlist-panel" aria-hidden="true">
+        <div class="wishlist-head">
+            <h2>Wishlist</h2>
+            <button class="secondary-button" id="close-wishlist" type="button">Close</button>
+        </div>
+        <div id="wishlist-empty" class="empty-state">No books saved yet.</div>
+        <div id="wishlist-list" class="wishlist-list"></div>
+    </aside>
 
-</footer>
-    
+    <button class="floating-action" id="wishlist-fab" type="button">Wishlist <span id="wishlist-count">0</span></button>
 
-
+    <template id="book-card-template">
+        <article class="book-card">
+            <button class="wishlist-toggle" type="button" aria-label="Add to wishlist">♡</button>
+            <img class="book-cover" alt="">
+            <div class="book-content">
+                <p class="book-category"></p>
+                <h3 class="book-title"></h3>
+                <p class="book-author"></p>
+                <div class="book-footer">
+                    <strong class="book-price"></strong>
+                    <div class="book-actions">
+                        <button class="secondary-button small-action" type="button" data-action="add-wishlist">Wish list</button>
+                        <button class="primary-button small-action" type="button" data-action="add-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </template>
 </body>
 </html>
